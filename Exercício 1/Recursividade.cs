@@ -24,7 +24,7 @@ namespace Exercício_1
                 DateTime fim = DateTime.Now;
                 int[] ordenado = new int[tamanho];
 
-                switch (Dev1.ValorDigitadoTratado("\nEscolha o algoritmo:(1) Bubble, (2) Quick, (3) List.Sort", "escolha!!!!", new string[] { "1", "2", "3" }))
+                switch (Dev1.ValorDigitadoTratado("\nEscolha o algoritmo: (1) Bubble, (2) Quick, (3) List.Sort", "escolha!!!!", new string[] { "1", "2", "3" }))
                 {
                     case "1":
                         ini = DateTime.Now;
@@ -32,8 +32,8 @@ namespace Exercício_1
                         fim = DateTime.Now;
                         break;
                     case "2":
-                        ini = DateTime.Now;
                         aleatorios.CopyTo(ordenado, 0);
+                        ini = DateTime.Now;
                         QuickSort(ordenado, 0, tamanho - 1);
                         fim = DateTime.Now;
                         break;
