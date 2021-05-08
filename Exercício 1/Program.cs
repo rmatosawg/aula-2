@@ -15,6 +15,7 @@ namespace Exercício_1
                 Console.WriteLine("1) primeiro programa de aula");
                 Console.WriteLine("2) estruturas mais complexas");
                 Console.WriteLine("3) recursividade");
+                Console.WriteLine("4) CarftList");
                 Console.WriteLine("---------");
                 Console.WriteLine("esc) Sair");
 
@@ -39,6 +40,9 @@ namespace Exercício_1
                     case '3':
                         Recursividade.Main(args);
                         break;
+                    case '4':
+                        CraftList.Main(args);
+                        break;
                     default:
                         opcao_reconhecida = false;
                         Console.WriteLine("Não existe essa opção.");
@@ -47,7 +51,11 @@ namespace Exercício_1
                 }
 
                 if (opcao_reconhecida)
+                {
+                    Console.WriteLine(" opção encerrada. digite uma tecla.");
+                    Console.ReadKey();
                     Console.Clear();
+                }
 
             }
 

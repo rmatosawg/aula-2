@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Exercício_1
@@ -24,7 +25,7 @@ namespace Exercício_1
         public static void Main(string[] args)
         {
             //TODO: perguntar quantos jogadores vão jogar (>=1), e quantas rodadas(>=1)
-            int qtd_jogadores = 1;
+            int qtd_jogadores = 2;
             int qtd_rodadas = 1;
 
             Dictionary<string, Jogador> jogadoresjogadas = ExemploMultiJogadorEstruturado(qtd_jogadores, qtd_rodadas);
@@ -57,8 +58,9 @@ namespace Exercício_1
 
             for (int J = 1; J <= qtdJ; J++)
             {
-                //TODO: pedir o nome do jogador através de uma função: lembrando que o nome não pode se repetir
-                string nome_digitado = "LEO";
+                //pedir o nome do jogador através de uma função: lembrando que o nome não pode se repetir
+                string[] nomes_jogadores = jogadores.Keys.Select(k => k).ToArray(); //depois explico
+                string nome_digitado = ObterNomeJogador(nomes_jogadores);
 
                 Jogador jogador = new Jogador();
                 jogador.nome = nome_digitado;
@@ -69,7 +71,9 @@ namespace Exercício_1
 
                 for (int R = 1; R <= qtdR; R++)
                 {
-                    //TODO: fazer a lógica da jogada dentro de uma função. A função retornará um struct "Jogada" preenchido 
+                    Console.WriteLine("{0}: jogue a {1}a rodada:", nome_digitado, R);
+
+                    //TODO: fazer a lógica da rodada dentro de uma função. A função retornará um struct "Jogada" preenchido 
                     Jogada jog = new Jogada();
 
                     jogadores[nome_digitado].jogadas[R - 1] = jog;
@@ -83,9 +87,31 @@ namespace Exercício_1
 
         }
 
+        private static string ObterNomeJogador(string[] nomes_ja_usados)
+        {
+            string nome;
+            do
+            {
+                Console.WriteLine("Digite o nome do jogador (não repetir, não digitar só espaço):");
+                nome = Console.ReadLine();
+            } while (nome.Trim() == "" || ExisteNoArray(nome, nomes_ja_usados));
+
+            return nome;
+        }
+
+        static bool ExisteNoArray(string valor, string[] array)
+        {
+            for(int i = 0; i < array.Length; i++)
+            {
+                if (array[i].ToUpper() == valor.ToUpper())
+                    return true;
+            }
+
+            return false;
+        }
 
         //HISTÓRICO: MULTIJOGADOR COM UM SÓ ARRAY, OU COM MATRIZ
-        static void MultiJogador()
+        static void MultiJogadorAntigo()
         {
             int qtdJ = 3;
             int qtdR = 3;

@@ -30,7 +30,14 @@ namespace Exercício_1
 
             } while (true);
 
-            int[] resultados = new int[TR];
+            List<int> resultados = new List<int>();
+
+            resultados[1] = 10;
+            resultados.Add(4);
+            resultados.Remove(10);
+            resultados.RemoveAt(1);
+            resultados.Sort();
+
 
             resultados[0] = 80;
             int VJ;
@@ -135,7 +142,7 @@ namespace Exercício_1
             return x + 1;
         }
 
-        static string ValorDigitadoTratado(string mensagem,
+        public static string ValorDigitadoTratado(string mensagem,
                                            string mensagem_erro,
                                            string[] possiveis_valores)
         {
@@ -164,6 +171,19 @@ namespace Exercício_1
             possiveis_valores[0] = "x";
 
             return dado;
+        }
+
+        public static int ColetaInteiro(int rangeini, int rangeend)
+        {
+            string val;
+            int valor = 0;
+            do
+            {
+                Console.WriteLine("Digite um número entre {0} e {1}", rangeini, rangeend);
+                val = Console.ReadLine();
+            } while (!int.TryParse(val, out valor) || valor < rangeini || valor > rangeend);
+
+            return valor;
         }
 
         static bool TentaConverter(string s, out int cuspido)
