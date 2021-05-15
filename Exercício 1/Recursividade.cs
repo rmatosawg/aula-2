@@ -10,26 +10,48 @@ namespace Exercício_1
     {
         public static void Main(string[] args)
         {
+            int[] aleatorios = null;
+
             while (true)
             {
-                Console.WriteLine("\n\n");
-                int tamanho = Dev1.ColetaInteiro(4, 1000000);
+                bool novo_sorteio = true;
+                int tamanho = 0;
 
-                int[] aleatorios = new int[tamanho];
+                if (aleatorios != null)
+                {
+                    tamanho = aleatorios.Length;
 
-                for (int i = 0; i < aleatorios.Length; i++)
-                    aleatorios[i] = new Random().Next(1, tamanho);
+                    Console.WriteLine("\n\n");
+                    novo_sorteio = (Dev1.ValorDigitadoTratado("\nGera novo array ? S ou N", "S ou N!!!!", new string[] { "S", "N" }) == "S");
+                }
+
+                if (novo_sorteio)
+                {
+                    Console.WriteLine("\n\n");
+                    tamanho = Dev1.ColetaInteiro(4, 1000000);
+
+                    aleatorios = new int[tamanho];
+
+                    for (int i = 0; i < aleatorios.Length; i++)
+                        aleatorios[i] = new Random().Next(1, tamanho * 10);
+
+                }
 
                 DateTime ini = DateTime.Now;
                 DateTime fim = DateTime.Now;
                 int[] ordenado = new int[tamanho];
 
-                switch (Dev1.ValorDigitadoTratado("\nEscolha o algoritmo: (1) Bubble, (2) Quick, (3) List.Sort", "escolha!!!!", new string[] { "1", "2", "3" }))
+                switch (Dev1.ValorDigitadoTratado("\nEscolha o algoritmo: (1) Bubble, (2) Quick, (3) List.Sort (4) Bubble Recursivo", "escolha!!!!", new string[] { "1", "2", "3", "4" }))
                 {
                     case "1":
+                        var aleatoriosoriginais = new int[aleatorios.Length];
+                        aleatorios.CopyTo(aleatoriosoriginais, 0);
                         ini = DateTime.Now;
                         ordenado = ArrayOrdenado(aleatorios);
                         fim = DateTime.Now;
+                        aleatorios = new int[aleatorios.Length];
+                        aleatoriosoriginais.CopyTo(aleatorios, 0);
+
                         break;
                     case "2":
                         aleatorios.CopyTo(ordenado, 0);
@@ -38,12 +60,25 @@ namespace Exercício_1
                         fim = DateTime.Now;
                         break;
                     case "3":
-                        ini = DateTime.Now;
+
                         List<int> lista = new List<int>(aleatorios);
+                        ini = DateTime.Now;
                         lista.Sort();
-                        ordenado = lista.ToArray();
                         fim = DateTime.Now;
+                        ordenado = lista.ToArray();
                         break;
+
+                    case "4":
+                        var aleatoriosoriginaisrec = new int[aleatorios.Length];
+                        aleatorios.CopyTo(aleatoriosoriginaisrec, 0);
+                        ini = DateTime.Now;
+                        ordenado = ArrayOrdenadoRecursivo(aleatorios, aleatorios.Length);
+                        fim = DateTime.Now;
+                        aleatorios = new int[aleatorios.Length];
+                        aleatoriosoriginaisrec.CopyTo(aleatorios, 0);
+
+                        break;
+
                 }
 
                 Console.WriteLine("Para ordenar {0} foram consumidos {1} milissegundos", tamanho, (fim.Ticks - ini.Ticks) / TimeSpan.TicksPerMillisecond);
@@ -100,27 +135,45 @@ namespace Exercício_1
 
         public static int[] ArrayOrdenado(int[] origem)
         {
-            int[] retorno = new int[origem.Length];
-            origem.CopyTo(retorno, 0);
-
             //ordenar um array de números
-            for (int j = 1; j < retorno.Length; j++)
+            for (int j = 1; j < origem.Length; j++)
             {
-                for (int i = 0; i < retorno.Length - 1; i++)
+                for (int i = 0; i < origem.Length - 1; i++)
                 {
                     //troca a posicao do array
-                    if (retorno[i] > retorno[i + 1])
+                    if (origem[i] > origem[i + 1])
                     {
-                        int temp = retorno[i];
-                        retorno[i] = retorno[i + 1];
-                        retorno[i + 1] = temp;
+                        int temp = origem[i];
+                        origem[i] = origem[i + 1];
+                        origem[i + 1] = temp;
                     }
                 }
             }
 
-            return retorno;
+            return origem;
         }
 
+        public static int[] ArrayOrdenadoRecursivo(int[] origem, int j)
+        {
+            bool trocou = false;
+
+            for (int i = 0; i < j - 1; i++)
+            {
+                //troca a posicao do array
+                if (origem[i] > origem[i + 1])
+                {
+                    trocou = true;
+                    int temp = origem[i];
+                    origem[i] = origem[i + 1];
+                    origem[i + 1] = temp;
+                }
+            }
+
+            if (j > 1 && trocou)
+                origem = ArrayOrdenadoRecursivo(origem, j - 1);
+
+            return origem;
+        }
 
         private static void QuickSort(int[] arr, int start, int end)
         {

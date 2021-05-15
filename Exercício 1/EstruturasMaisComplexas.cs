@@ -24,7 +24,7 @@ namespace Exercício_1
 
         public static void Main(string[] args)
         {
-            //TODO: perguntar quantos jogadores vão jogar (>=1), e quantas rodadas(>=1)
+            //TODO: SOLVED perguntar quantos jogadores vão jogar (>=1), e quantas rodadas(>=1)
             int qtd_jogadores = 2;
             int qtd_rodadas = 1;
 
