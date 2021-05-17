@@ -2,11 +2,104 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>exemplo</title>
+    <description></description>
+
+    <link href="StyleSheet1.css" rel="stylesheet" />
+
+    <script>
+        function executatimer(i) {
+            setTimeout(function () { fedeu.style.display = 'block'; }, i);
+        }
+    </script>
+
+
 </head>
-<body>
-    fdgdsfg  <i>dfgdsgdfgdfg</i>  gfgdfg
+<body onload="executatimer(2000);">
+    fdgdsfg
+
+    <div id="fedeu" style="position:absolute; display:none; background: red">
+        QUE PENA! COPIEI SEUS DADOS!
+    </div>
+
+
+
+    <i>dfgdsgdfgdfg</i>&nbsp;rterterter dfgd&Aacute;&aacute;&quot;
+
+    gfgdfg
     <p> dsfsdfsdf </p>
-    <div style="width: 100px; border: 1px solid red;"> sdffsdfsdfs </div>
+
+    <br />
+    <img id="img1" width="100" src="https://img.wattpad.com/bc33a2b22491100673208a4b206edddd5212dc88/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f6c474f475438597a6c4379442d513d3d2d3234312e313466336638616464313636646436633738363932373239303739312e6a7067?s=fit&w=720&h=720" alt="Alternate Text" />
+    <p> jhjhgydtrst tf75f6rc </p>
+    <table border="2px">
+        <tr>
+            <td>
+                fgdfgdfg
+            </td>
+
+            <td>
+                ewrwrewr
+            </td>
+        </tr>
+        <tr>
+            <td>
+                fgdfgdfg
+            </td>
+
+            <td>
+                ewrwrewr
+            </td>
+        </tr>
+    </table>
+    <div style="width: 100px; border: 1px solid red;">
+        <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiZxc2508zwAhUTqZUCHSxZAHMQtwIwFXoECBIQAw&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9t3sbHoaQrk&usg=AOvVaw3OxZE-4Qt-TUWFlH5GBNAg" target="_blank">
+            exemplo de site
+        </a>
+        <p>
+            dsf <br />
+            dgdfsf <br /> sdfsdf
+        </p>
+        sdffsdfsdfs
+
+
+
+    </div>
+
+    <form action="https://#">
+        informe seu nome: <input type="text" name="texto_1" />
+
+        deseja confirmar ? <input type="checkbox" onclick=" clica(this); " />
+        <input type="button" value="enviar" />
+        <span id="label_arquivo">texto do label</span>
+        <input type="file" value="arquivo" name="campo_arquivo" id="campo_arquivo" style="display: none" />
+
+        <script>
+            function clica(cb) {
+
+                disp = 'hidden';
+
+                if (cb.checked) {
+                    disp = "block";
+
+                    label_arquivo.innerText = "Informe o nome";
+
+                }
+                else {
+                    disp = 'none';
+                    img1.src = "https://aventurasnahistoria.uol.com.br/media/_versions/meme_caixao_capa_widexl.jpg";
+                    fedeu.innerHTML = fedeu.innerHTML + "<p id=\"novo_paragrafo\"> outro conteudo </p>";
+                    novo_paragrafo.style.background = 'green';
+                }
+                campo_arquivo.style.display = disp;
+            }
+
+        </script>
+
+    </form>
+    <script>
+
+    </script>
+
 </body>
 </html>
