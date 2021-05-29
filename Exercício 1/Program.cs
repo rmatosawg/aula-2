@@ -16,6 +16,8 @@ namespace Exercício_1
                 Console.WriteLine("2) estruturas mais complexas");
                 Console.WriteLine("3) recursividade");
                 Console.WriteLine("4) CarftList");
+                Console.WriteLine("5) OOP");
+                Console.WriteLine("6) IO");
                 Console.WriteLine("---------");
                 Console.WriteLine("esc) Sair");
 
@@ -42,6 +44,12 @@ namespace Exercício_1
                         break;
                     case '4':
                         CraftList.Main(args);
+                        break;
+                    //case '5':
+                    //    OOP.Program.Main(args);
+                    //    break;
+                    case '6':
+                        IOTestes.Main(args);
                         break;
                     default:
                         opcao_reconhecida = false;

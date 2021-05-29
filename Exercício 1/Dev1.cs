@@ -9,7 +9,7 @@ namespace Exercício_1
 
         public static void Main(string[] args)
         {
-
+            
             //variáveis
             int TR;
             string XPTO;
@@ -37,7 +37,7 @@ namespace Exercício_1
             resultados.Remove(10);
             resultados.RemoveAt(1);
             resultados.Sort();
-
+            
 
             resultados[0] = 80;
             int VJ;
@@ -66,7 +66,7 @@ namespace Exercício_1
                 bool Conversivel;
                 Console.WriteLine("Digite um número");
                 string numero_s = Console.ReadLine();
-
+              
                 if (numero_s == "EXIT")
                 {
                     break;
@@ -82,14 +82,15 @@ namespace Exercício_1
                     Conversivel = true;
                     Console.WriteLine("Você não digitou um número ou ele é maior que 50. Tente de novo");
                     Conversivel = int.TryParse(Console.ReadLine(), out VJ);
+                    
                 }
 
                 //vez do computador e input de operação
                 Console.WriteLine("O Computador vai gerar um número.");
                 VC = A.Next(1, 11);
-
+                
                 string[] valores_validos = { "A", "S", "M", "CANCEL" };
-
+                
                 OD = ValorDigitadoTratado("Digite A para adição e S para subtração M para multiplicação (ou CANCEL)",
                                           "Você não digitou algo válido. Tente novamente. A para + e S para -",
                                           valores_validos);
